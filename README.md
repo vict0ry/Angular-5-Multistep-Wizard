@@ -38,7 +38,7 @@ Usage example :
 </app-wizzard>
 ```
 ## Using: 
-if you would like to use form as component : 
+if you would like to use component as a form : 
 1) create formGroup: FormGroup in your component, 
 2) use #formComponent reference in your form. (check example above)
 
