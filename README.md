@@ -1,27 +1,46 @@
-# NextProject
+Angular 5 Multistep, you can pass component with form or directly write your form between step tags. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+## HOW TO RUN IT: 
 
-## Development server
+1) download dependencies:
+```bash
+$ npm install
+```
+2) run it on http://localhost:4200
+```bash
+$ ng serve
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Usage example :
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```xml
+<app-wizzard (isDone)="registrationComplete($event)" (stepChange)="stepChange($event)">
 
-## Build
+  <app-step>
+    <!-- PUT YOUR FORM HERE WITH REFERENCE #formComponent-->
+    <app-test #formComponent></app-test>
+  </app-step>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+  <app-step>
+    <app-test1 #formComponent></app-test1>
+  </app-step>
 
-## Running unit tests
+  <app-step [form]="myForm">
+    <form #myForm="ngForm" class="test-form" [formGroup]="formGroup">
+      <label for="phone">Phone:</label>
+      <input id="phone" formControlName="phone" type="text">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="text">
+    </form>
+  </app-step>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+</app-wizzard>
+```
+## Using: 
+if you would like to use form as component : 
+1) create formGroup: FormGroup in your component, 
+2) use #formComponent reference in your form. (check example above)
 
-## Running end-to-end tests
+If you're using form directly inside <app-step> send your ngForm reference as a parameter to <app-step> (check example above)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
