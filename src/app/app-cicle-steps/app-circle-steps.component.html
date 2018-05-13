@@ -1,0 +1,5 @@
+<app-circle-step *ngFor="let step of circleSteps; let last = last;"
+                 [status]="step.status"
+                 [stepNumber]="step.stepNumber"
+                 [isLast]="last"
+                 [currentStep]="step.currentStep"></app-circle-step>

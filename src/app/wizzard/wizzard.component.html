@@ -1,0 +1,6 @@
+<ng-content></ng-content>
+
+<div *ngIf="!isLast" class="navigation-btns">
+  <input class="next-step" [disabled]="stepByClick === 0" type="submit" (click)="renderPrevStep()" value="Previous">
+  <input class="next-step" type="submit" (click)="renderNextStep()" value="Next">
+</div>
