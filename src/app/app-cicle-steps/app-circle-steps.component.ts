@@ -8,24 +8,16 @@ import {EnumStatus} from '../stepper/circle-step.component';
   templateUrl: './app-circle-steps.component.html',
   styleUrls: ['./app-circle-steps.component.less']
 })
-export class AppCircleStepsComponent implements OnInit, OnChanges {
+export class AppCircleStepsComponent {
 
-  @Input() circles: IWizzardState;
-  circleSteps = [];
+  circleSteps: Array<IStep>;
 
-  constructor() {
-  }
-
-  ngOnInit() {
-
-  }
-
-  ngOnChanges() {
-    if (this.circles && this.circles.steps) {
+  @Input() set circles(circles: IWizzardState | undefined) {
+    if (circles && circles.steps) {
       this.circleSteps = [];
-      this.circles.steps.forEach((step: StepComponent, index: number) => {
+      circles.steps.forEach((step: StepComponent, index: number) => {
         const tempStep: IStep = {
-          currentStep: this.circles.currentStep,
+          currentStep: circles.currentStep,
           stepNumber: index,
           status: 'DONE',
         };

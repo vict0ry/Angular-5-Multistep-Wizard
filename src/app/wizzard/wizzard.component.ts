@@ -21,8 +21,6 @@ export class WizzardComponent implements AfterContentInit {
   isLast: boolean;
 
   ngAfterContentInit() {
-    console.log(this.currentState());
-    console.log('test');
     this.stepChange.emit(this.currentState());
     this.activateFirstStep();
     this.renderNextStep();
